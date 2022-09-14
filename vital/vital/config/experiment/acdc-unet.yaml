@@ -1,0 +1,17 @@
+# @package _global_
+
+defaults:
+
+  # Set the system, module and data
+  - override /system: segmentation.yaml
+  - override /system/module: unet.yaml
+  - override /data: acdc.yaml
+
+  # If you do not want early stopping or you want to add new callbacks:
+  - override /callbacks:
+    - model_checkpoint
+
+# Overwrite arguments from configs here:
+trainer:
+  max_epochs: 300
+

@@ -1,0 +1,5 @@
+pre-commit>=2.9.0
+isort==5.8.0
+black==21.5b1
+flake8==3.9.2
+flake8-docstrings==1.6.0

@@ -1,0 +1,11 @@
+defaults:
+  - data
+  - transform: normalize
+
+_target_: vital.data.HMC_QU.data_module.HMC_QUDataModule
+
+dataset_path: ${oc.env:HMCQU_DATA_PATH}
+
+transform:
+  mean: 0.1555
+  std: 0.2126

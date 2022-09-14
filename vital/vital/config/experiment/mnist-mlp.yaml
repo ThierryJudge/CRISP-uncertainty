@@ -1,0 +1,18 @@
+# @package _global_
+
+defaults:
+  - override /system: classification.yaml
+  - override /system/module: mlp.yaml
+  - override /data: mnist.yaml
+
+# Overwrite arguments from configs here:
+# You can also add arguments that are not defined in the object configs.
+trainer:
+  max_epochs: 300
+
+data:
+  batch_size: 64
+
+callbacks:
+  early_stopping:
+    patience: 10

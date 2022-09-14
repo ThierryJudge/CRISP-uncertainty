@@ -1,0 +1,14 @@
+# This is an example config to show how to use vital and hydra configs is your project.
+
+defaults:
+  - default # This references default config from vital.conf
+  - override exp: mnist-mlp # Run Mnist experiment with MLP
+
+# Overwrite arguments from configs here:
+trainer:
+  max_epochs: 3
+
+hydra:
+  sweeper:
+    overrides:
+      data.batch_size: 32, 64, 128

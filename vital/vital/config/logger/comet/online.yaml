@@ -1,0 +1,5 @@
+_target_: pytorch_lightning.loggers.comet.CometLogger
+offline: False
+# Project name and workspace can be defined in default config on in command line.
+project_name: null
+workspace: null

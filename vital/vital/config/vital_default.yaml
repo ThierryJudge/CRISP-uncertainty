@@ -1,0 +1,48 @@
+
+#### This must be added to the main config.
+#### This cannot be added here because overrides cannot de defined twice which prevents using exp.
+
+#defaults:
+#  - trainer: default
+#  - system: system # Not a usable file but contains common fields
+#  - data: data # Not a usable file but contains common fields
+#  - callbacks:
+#      - early_stopping
+#      - model_checkpoint
+#  - logger: tensorboard
+#
+##  - exp: null
+#
+#  - override hydra/sweeper: config # Same as Hydra's BasicSweeper but allows sweep overrides in config. See hydra_plugins
+
+
+seed: null
+
+resume: False
+
+# IMPORTANT NOTE: When using a local checkpoint with a relative path add the working_dir to the checkpoint path because
+# hydra will change the current working directory. For example:
+# If defined in the config:  `ckpt: ${work_dir}/path/to/checkpoint.ckpt`
+# If defined in the command line: `ckpt=\${work_dir}/path/to/checkpoint.ckpt`
+# Same syntax is expected for weights parameter.
+ckpt: null
+weights: null
+strict: True
+
+train: True
+test: True
+
+comet_tags: null # Tags to for comet experiment if CometLogger is used.
+
+# Copy of original working directory before hydra changes it. Useful for paths.
+work_dir: ${hydra:runtime.cwd}
+# Keep track of choices.
+choices: ${hydra:runtime.choices}
+
+# Save path defines where to save the model. If none, hydra working directory is used.
+sp: null
+
+# If using save_top_k>1 with model_checkpoint, define this regex to extract that desired model from the string name.
+# Make sure model_checkpoint.filename if define appropriately.
+best_model_regex: null
+best_model_selection: null # Max or min

@@ -1,0 +1,12 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+# To run this experiment `python runner.py exp=mnist-mlp`
+defaults:
+  - override /system: segmentation
+  - override /system/module: enet
+  - override /data: camus
+
+# Overwrite arguments from configs here:
+trainer:
+  max_epochs: 300

@@ -1,0 +1,41 @@
+defaults:
+  - table
+
+include_tag:
+  - 'TEST-ULTROMICS'
+
+metrics_file: null # Metric file to avoid downloading from comet
+
+groupby: 'id' # Aggregate results and return mean.
+
+
+metrics:
+  - "test_dice"
+  - "test_Correlation"
+  - "test_PixelCalibration_ece"
+  - "test_sample_ece"
+  - "test_mutual_info"
+  - "test_thresh.(quartile)_mutual_info"
+  - "test_overlap"
+  - "test_thresh.(quartile)_overlap"
+  - "test_FPR"
+  - "test_FNR"
+  - "test_thresh.(0.75)_overlap"
+  - "test_thresh.(0.75)_mutual_info"
+
+metrics_bold:
+  test_dice: max
+  test_Correlation: max
+  test_PixelCalibration_ece: min
+  test_sample_ece: min
+  test_mutual_info: max
+  test_thresh.(quartile)_mutual_info: max
+  test_overlap: max
+  test_thresh.(quartile)_overlap: max
+  test_FPR: min
+  test_FNR: min
+  test_thresh.(0.75)_overlap: max
+  test_thresh.(0.75)_mutual_info: max
+
+project_name: crisp-miccai2022
+workspace: thierryjudge

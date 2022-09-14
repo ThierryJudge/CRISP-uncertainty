@@ -1,0 +1,18 @@
+defaults:
+  # Module is part of the system to allow system to override module parameters.
+  - module: null
+
+weight_decay: 0.001
+lr: 0.001
+
+train_log_kwargs:
+  prog_bar: False
+  logger: True
+  on_step: True
+  on_epoch: null
+
+val_log_kwargs:
+  prog_bar: False
+  logger: True
+  on_step: null
+  on_epoch: True

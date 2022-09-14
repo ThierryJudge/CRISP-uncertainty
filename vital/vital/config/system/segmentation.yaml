@@ -1,0 +1,6 @@
+defaults:
+  - system
+
+_target_: vital.systems.segmentation.SegmentationComputationMixin
+dice_weight: 1
+cross_entropy_weight: 0.1

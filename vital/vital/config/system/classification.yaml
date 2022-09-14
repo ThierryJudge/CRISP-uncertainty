@@ -1,0 +1,4 @@
+defaults:
+  - system
+
+_target_: vital.systems.classification.ClassificationComputationMixin

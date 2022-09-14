@@ -1,0 +1,3 @@
+_target_: pytorch_lightning.loggers.comet.CometLogger
+save_dir: "."
+offline: True

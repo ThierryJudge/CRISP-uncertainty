@@ -1,0 +1,2 @@
+early_stopping:
+  _target_: "pytorch_lightning.callbacks.EarlyStopping"

@@ -1,0 +1,21 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+# To run this experiment `python runner.py exp=mnist-mlp`
+
+defaults:
+  - override /system: classification
+  - override /system/module: mlp
+  - override /data: mnist
+
+# Overwrite arguments from configs here:
+# You can also add arguments that are not defined in the object configs.
+trainer:
+  max_epochs: 300
+
+data:
+  batch_size: 128
+
+callbacks:
+  early_stopping:
+    patience: 10

@@ -1,0 +1,20 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+# To run this experiment `python runner.py exp=mnist-mlp`
+defaults:
+  # Set the system, module and data
+  - override /system: classification
+  - override /system/module: unet
+  - override /data: acdc
+
+  # If you do not want early stopping or you want to add new callbacks:
+  - override /callbacks:
+    - model_checkpoint
+
+# Overwrite arguments from configs here:
+trainer:
+  max_epochs: 300
+
+
+weights: hello
