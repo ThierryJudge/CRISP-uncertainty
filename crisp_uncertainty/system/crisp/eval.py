@@ -113,12 +113,6 @@ class EvalCRISP(UncertaintyEvaluationSystem, CRISP):
         print("Latent features", self.train_set_features.shape)
         print("Latent segmentations", self.train_set_segs.shape)
 
-        # TODO uncomment for augmented samples
-        # if self.samples is not None:
-        #     self.train_set_features = torch.cat([self.train_set_features, self.samples.to(self.device)])
-        # self.train_set_segs = torch.cat(train_set_segs)
-        # else:
-        #     self.train_set_features = self.samples
 
         self.uncertainty_threshold = self.find_threshold(datamodule)
         self.log('best_uncertainty_threshold', self.uncertainty_threshold)
@@ -194,29 +188,9 @@ class EvalCRISP(UncertaintyEvaluationSystem, CRISP):
         R_hat = torch.norm(x_hat)
         mu = x_hat / R_hat
         kappa = R_hat * (8 - R_hat**2) / 1 - R_hat**2
-        # print(R_hat)
-        # print(x_hat)
-        # print(mu)
-        # print(kappa)
-        # print("Kappa: ", kappa.item())
-        h0 = 7**(1/2) * (1 / kappa**(1/2)) * sample_features.shape[0]**(-1/5)
-        # print("H0: ", h0)
         h0 = kappa**(-1/2) * (40 * torch.sqrt(torch.tensor(math.pi)) * sample_features.shape[0])**(-1/5)
-        # print(h0)
-
-        # print(h0, kappa)
-
-        # print("H0: ", h0)
-        # print("image w: ", torch.exp(h0 * image_features @ image_features.t()).squeeze())
-
-        # weights = torch.exp(1 / h0 * image_features @ sample_features.t()).squeeze() / torch.exp(h0 * image_features @ image_features.t()).squeeze()
-        # print(weights[:10])
         weights = torch.exp(1 / h0 * (image_features @ sample_features.t() - 1)).squeeze().cpu()
 
-        # print(weights[:10])
-        # weights = torch.exp(-h0 * torch.acos(mu @ sample_features.t())**2).squeeze()
-
-        # print(weights.shape)
 
 
         # Get indices of samples higher than the prediction logits
@@ -227,45 +201,12 @@ class EvalCRISP(UncertaintyEvaluationSystem, CRISP):
         samples = samples[indices].squeeze()
         weights = weights[indices.cpu()]
 
-        # print(gaussian_weights[indices.cpu()][:10])
-        # print(weights[:10])
-        #
-        # from matplotlib import pyplot as plt
-        # fig, axs = plt.subplots(1, 2, tight_layout=True)
-        #
-        #
-        # print(gaussian_weights[gaussian_weights > 0.01].shape)
-        # print(weights[weights > 0.01].shape)
-        #
-        # # We can set the number of bins with the *bins* keyword argument.
-        # axs[0].hist(gaussian_weights[gaussian_weights > 0.01], bins=20)
-        # axs[1].hist(weights[weights > 0.01].numpy(), bins=20)
-        #
-        # plt.show()
-
-        decoded = self.seg_decoder(samples)
-        # if self.hparams.decode:
-        #     decoded = decoded.argmax(1) if decoded.shape[1] > 1 else torch.sigmoid(decoded).round()
-        # else:
         decoded = self.train_set_segs[indices].squeeze()
         if self.seg_channels > 1:
             decoded = to_onehot(decoded, num_classes=self.seg_channels)
 
-        # print(decoded.shape)
-        # print(pred.shape)
         uncertainty_map = []
-        aleatoric_map = []
         for i in range(decoded.shape[0]):
-
-            # from matplotlib import pyplot as plt
-            #
-            # plt.figure()
-            # plt.imshow(decoded[i].cpu().squeeze())
-            #
-            # plt.figure()
-            # plt.imshow(pred.cpu().squeeze())
-            # plt.show()
-
             weight = weights[i]
             # print(weight)
             diff = (~torch.eq(pred.squeeze().cpu(), decoded[i].cpu().squeeze())).float()
@@ -274,20 +215,6 @@ class EvalCRISP(UncertaintyEvaluationSystem, CRISP):
 
         uncertainty_map = torch.cat(uncertainty_map, dim=0)
         uncertainty_map = uncertainty_map.mean(0).squeeze()
-
-        # aleatoric_map = torch.cat(aleatoric_map, dim=0)
-        # mean_map = aleatoric_map.mean(0).squeeze()
-        # std_map = aleatoric_map.std(0).squeeze()
-        #
-        # from matplotlib import pyplot as plt
-        #
-        # plt.figure()
-        # plt.imshow(mean_map)
-        # plt.show()
-        #
-        # plt.figure()
-        # plt.imshow(std_map)
-        # plt.show()
 
         if self.seg_channels > 1:
             labels_values = [label.value for label in self.hparams.data_params.labels if label.value != 0]
