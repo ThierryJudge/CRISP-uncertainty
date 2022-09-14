@@ -1,5 +1,5 @@
-# echo-segmentation-uncertainty
-Echocardiography segmentation uncertainty estimation
+# CRISP-Uncertainty
+CRISP Echocardiography segmentation uncertainty estimation
 
 
 
@@ -8,10 +8,10 @@ This project also uses the [vital submodule](https://github.com/nathanpainchaud/
 ## How to run
 First, install dependencies
 ```bash
-git clone --recurse-submodules https://github.com/ThierryJudge/echo-segmentation-uncertainty.git
+git clone --recurse-submodules https://github.com/ThierryJudge/CRISP-uncertainty.git
 
 # install echo-segmentation-uncertainty
-cd echo-segmentation-uncertainty
+cd CRISP-uncertainty
 conda env create -f requirements/environment.yml
  ```
 You are now ready to import modules and run code.
