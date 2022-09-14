@@ -1,0 +1,18 @@
+name: echosu
+channels:
+  - comet_ml
+  - conda-forge
+  - pytorch
+  - simpleitk
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - setuptools
+  - cudatoolkit=10.1
+  - pip:
+    - -r requirements.txt
+    - -r dev.txt
+    - -r ../vital/requirements/requirements.txt
+    - -e ../vital[dev]
+    - -e ../.

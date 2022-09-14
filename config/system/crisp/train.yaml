@@ -1,0 +1,16 @@
+_target_: crisp_uncertainty.system.crisp.train.TrainCRISP
+
+# Use the default values from segmentation system
+defaults:
+  - crisp
+
+module: null # No module for training crisp, module (encoder/decoder) is created in init method.
+
+cross_entropy_weight:  0.1
+dice_weight:  1
+clip_weight:  1
+reconstruction_weight: 1
+kl_weight: 0.5
+interpolation_augmentation_samples: 0
+attr_reg: False
+save_samples: null

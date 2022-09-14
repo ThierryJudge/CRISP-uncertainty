@@ -1,0 +1,9 @@
+# Use the default values from segmentation system
+defaults:
+  - segmentation
+  - override module: enet
+
+reduction: mean
+normalize: False
+mask_bg_uncertainty: True
+uncertainty_threshold: -1

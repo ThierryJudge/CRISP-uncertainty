@@ -1,0 +1,15 @@
+
+_target_: crisp_uncertainty.system.crisp.eval.EvalCRISP
+
+defaults:
+  - crisp
+
+module_ckpt: ???
+clip_ckpt: ???
+
+variance_factor: -1
+num_samples: 150
+uncertainty_threshold: 0.25
+samples_path: null
+iterations: 1
+decode: true

@@ -1,0 +1,9 @@
+ # @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - lung_default
+  - override /system: learnconf
+
+train: false
+weights:  ${model_path}/${choices.data}-${choices.system}-DA${data.da}-${seed}.ckpt

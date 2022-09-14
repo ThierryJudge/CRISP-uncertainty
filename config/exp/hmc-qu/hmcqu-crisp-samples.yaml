@@ -1,0 +1,15 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: crisp/eval
+
+train: false
+system:
+  clip_ckpt: ${model_path}/camus-MYO-crisp-${seed}.ckpt
+  module_ckpt: ${model_path}/camus-MYO-segmentation-${seed}.ckpt # Dummy
+  save_samples: ${model_path}/camus-MYO-samples-4CH-seq-${seed}.pt
+data:
+  views: ['4CH']
+  use_sequence: True

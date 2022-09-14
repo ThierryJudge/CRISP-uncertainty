@@ -1,0 +1,18 @@
+defaults:
+  - data
+
+_target_: crisp_uncertainty.data.camus_dm.CamusDataModule
+
+dataset_path: ${oc.env:CAMUS_DATA_PATH}
+labels:
+  - BG
+  - LV
+  - MYO
+  - ATRIUM
+fold: 5
+use_sequence: False
+max_patients: null
+da: null
+
+test_da: null
+views: ['2CH','4CH']

@@ -1,0 +1,18 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: crisp/train
+  - override /data: lung
+
+train: True
+test: False
+
+trainer:
+  max_epochs: 0
+
+system:
+  clip_ckpt: ${model_path}/${choices.data}-crisp-DA${data.da}-${seed}.ckpt
+  module_ckpt: ${model_path}/${choices.data}-segmentation-DA${data.da}-${seed}.ckpt # Dummy
+  save_samples: ${model_path}/lung-samples-${seed}.pt

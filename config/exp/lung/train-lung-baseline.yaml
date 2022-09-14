@@ -1,0 +1,9 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: segmentation
+  - override /data: lung
+
+name: ${choices.data}-${choices.system}-DA${data.da}-${seed}.ckpt

@@ -1,0 +1,10 @@
+_target_: crisp_uncertainty.system.mcdropout.McDropoutUncertainty
+
+# Use the default values from segmentation system
+defaults:
+  - uncertainty
+
+iterations: 10
+
+module:
+  dropout: 0.5

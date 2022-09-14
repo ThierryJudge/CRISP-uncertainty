@@ -1,0 +1,6 @@
+_target_: crisp_uncertainty.modules.confidenet.ConfidEnet
+
+init_channels: 16
+dropout: 0.1
+encoder_relu: True
+decoder_relu: True

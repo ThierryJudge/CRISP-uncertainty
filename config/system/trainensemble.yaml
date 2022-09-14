@@ -1,0 +1,7 @@
+_target_: crisp_uncertainty.system.ensemble.TrainEnsemble
+
+# Use the default values from segmentation system
+defaults:
+  - uncertainty
+
+data_split: 0.9

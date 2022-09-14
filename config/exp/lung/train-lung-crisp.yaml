@@ -1,0 +1,9 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: crisp/train
+  - override /data: lung
+
+name: ${choices.data}-crisp-DA${data.da}-${seed}.ckpt

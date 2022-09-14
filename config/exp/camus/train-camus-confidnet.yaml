@@ -1,0 +1,13 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: confidnet
+
+test: false
+
+name: ${choices.data}${camus_labels:${data.labels}}-${choices.system}-${seed}.ckpt
+
+weights: ${model_path}/${choices.data}${camus_labels:${data.labels}}-segmentation-${seed}.ckpt
+strict: false

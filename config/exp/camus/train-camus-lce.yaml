@@ -1,0 +1,10 @@
+ # @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: learnconf
+
+test: false
+
+name: ${choices.data}${camus_labels:${data.labels}}-${choices.system}-${seed}.ckpt

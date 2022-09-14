@@ -1,0 +1,8 @@
+_target_: crisp_uncertainty.system.morphology.MorphologyUncertainty
+
+# Use the default values from segmentation system
+defaults:
+  - uncertainty
+
+thickness: 5
+uncertainty_threshold: -1

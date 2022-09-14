@@ -1,0 +1,7 @@
+_target_: crisp_uncertainty.system.softmax.SoftmaxUncertainty
+
+# Use the default values from segmentation system
+defaults:
+  - uncertainty
+
+mode: entropy

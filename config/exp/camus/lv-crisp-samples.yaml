@@ -1,0 +1,12 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: crisp/eval
+
+train: false
+system:
+  clip_ckpt: ${model_path}/camus-lv-crisp-${seed}.ckpt
+  module_ckpt: ${model_path}/camus-lv-segmentation-${seed}.ckpt # Dummy
+  save_samples: ${model_path}/camus-lv-samples${seed}.pt

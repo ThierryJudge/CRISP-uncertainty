@@ -1,0 +1,9 @@
+# Install required packages that are not in vital submodule requirements.
+torch==1.8.1
+torchvision
+pytorch-lightning
+matplotlib
+comet-ml
+configargparse
+schema
+torchsummary

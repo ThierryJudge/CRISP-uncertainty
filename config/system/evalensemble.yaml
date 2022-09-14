@@ -1,0 +1,7 @@
+_target_: crisp_uncertainty.system.ensemble.EvalEnsemble
+
+# Use the default values from segmentation system
+defaults:
+  - uncertainty
+
+ensemble_ckpt: ???

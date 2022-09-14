@@ -1,0 +1,10 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: softmax
+  - override /data: hmc_qu
+
+train: false
+weights:  ${model_path}/camus-MYO-segmentation-${seed}.ckpt

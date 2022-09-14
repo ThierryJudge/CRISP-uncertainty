@@ -1,0 +1,14 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: confidnet
+  - override /data: lung
+
+test: false
+
+name: ${choices.data}-${choices.system}-DA${data.da}-${seed}.ckpt
+
+weights: ${model_path}/${choices.data}-segmentation-DA${data.da}-${seed}.ckpt
+strict: false

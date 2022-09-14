@@ -1,0 +1,10 @@
+_target_: crisp_uncertainty.system.aleatoric.AleatoricUncertainty
+
+# Use the default values from segmentation system
+defaults:
+  - uncertainty
+
+iterations: 10
+
+module:
+  sigma_out: True

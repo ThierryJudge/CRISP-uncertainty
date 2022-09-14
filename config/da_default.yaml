@@ -1,0 +1,20 @@
+# Default configuration.
+
+
+defaults:
+  - data: camus.yaml
+  - rejection_sampler: clip_sampler
+
+clip_ckpt: ???
+num_samples: 7500
+num_sample_images: 100
+rs_batch_size: 20
+output_folder: ''
+
+# Copy of original working directory before hydra changes it. Useful for paths.
+work_dir: ${hydra:runtime.cwd}
+
+# Set this to get configs in VITAL submodule.
+hydra:
+  searchpath:
+    - pkg://vital.config

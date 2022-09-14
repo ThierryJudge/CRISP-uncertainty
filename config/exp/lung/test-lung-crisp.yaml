@@ -1,0 +1,13 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - lung_default
+  - override /system: crisp/eval
+
+train: false
+system:
+  clip_ckpt: ${model_path}/${choices.data}-crisp-DA${data.da}-${seed}.ckpt
+  samples_path: ${model_path}/lung-samples-${seed}.pt
+  num_samples: 50
+  uncertainty_threshold: 0.3

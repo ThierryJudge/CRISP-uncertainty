@@ -1,0 +1,15 @@
+# Use the default values from segmentation system
+defaults:
+  - uncertainty
+
+img_latent_size: 64
+seg_latent_size: 16
+latent_size: 8
+img_blocks: 6
+seg_blocks: 4
+init_channels: 32
+decode_img:  False
+decode_seg:  True
+linear_constraint_weight: 0
+linear_constraint_attr: frame_pos
+seg_channels: null

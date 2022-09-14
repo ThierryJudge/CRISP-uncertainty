@@ -1,0 +1,25 @@
+
+defaults:
+  - vital_default # This references default config from vital.config.vital_default.yaml
+  - trainer: default
+  - system: uncertainty
+  - data: camus
+  - logger: comet/online
+  - callbacks:
+      - early_stopping
+      - model_checkpoint
+  - override system/module: enet
+
+# Set comet project name and workspace
+logger:
+  project_name: crisp-miccai2022
+  workspace: thierryjudge
+
+seed: 55
+
+trainer:
+  max_epochs: 1000
+
+callbacks:
+  early_stopping:
+    patience: 100

@@ -1,0 +1,14 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: mcdropout
+
+system:
+  module:
+    dropout: 0.5
+
+test: false
+
+name: ${choices.data}${camus_labels:${data.labels}}-${choices.system}${frac:${system.module.dropout}}-${seed}.ckpt

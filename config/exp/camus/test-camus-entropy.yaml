@@ -1,0 +1,9 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: softmax
+
+train: false
+weights: ${model_path}/${choices.data}${camus_labels:${data.labels}}-segmentation-${seed}.ckpt

@@ -1,0 +1,10 @@
+_target_: crisp_uncertainty.system.learnconf.LearningConfidence
+
+# Use the default values from segmentation system
+defaults:
+  - uncertainty
+
+budget: 0.3
+
+module:
+  conf_out: True

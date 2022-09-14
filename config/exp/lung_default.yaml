@@ -1,0 +1,13 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - /data/transform: normalize
+  - override /data: lung
+
+
+data:
+  transform:
+    mean: 0.5537925
+    std: 0.29799744

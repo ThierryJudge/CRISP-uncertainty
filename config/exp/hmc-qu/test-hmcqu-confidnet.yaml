@@ -1,0 +1,10 @@
+# @package _global_
+# This header make any parameters in these configs global.
+
+defaults:
+  - default
+  - override /system: confidnet
+  - override /data: hmc_qu
+
+train: False
+weights: ${model_path}/camus-MYO-${choices.system}-${seed}.ckpt
